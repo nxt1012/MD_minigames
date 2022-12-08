@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+
+  </style>
+</head>
+<button id="up" type="button" onclick="moveUp()">&uarr;</button>
+<button id="down" type="button" onclick="moveDown()">&darr;</button>
+<button id="left" type="button" onclick="moveLeft()">&larr;</button>
+<button id="right" type="button" onclick="moveRight()">&rarr;</button><p></p>
+<img id="tank" src="imgs/Up.PNG" alt="Up"><br>
+<script>
+  //initiate tank initial position
+  let tankPosition = document.getElementById("tank");
+  function init () {
+    tankPosition.style.position = "relative";
+    tankPosition.style.left = 0 + "px";
+    tankPosition.style.top = 0 + "px";
+  }
+  // run init function
+  init();
+  // change image and image position
+  function moveRight () {
+    tankPosition.src = "imgs/Right.PNG";
+    tankPosition.style.left = parseInt(tankPosition.style.left) + 20 + "px";
+  }
+  function moveLeft () {
+    tankPosition.src = "imgs/Left.PNG";
+    tankPosition.style.left = parseInt(tankPosition.style.left) - 20 + "px";
+  }
+  function moveDown () {
+    tankPosition.src = "imgs/Down.PNG";
+    tankPosition.style.top = parseInt(tankPosition.style.top) + 20 + "px";
+  }
+  function moveUp () {
+    tankPosition.src = "imgs/Up.PNG";
+    tankPosition.style.top = parseInt(tankPosition.style.top) - 20 + "px";
+  }
+  // here parameter is event, use event.keyCode to determine when and which function is legit to execute
+  function selectKeyboardMovement(event) {
+    switch (event.keyCode) {
+      case 37:
+        moveLeft();
+        break;
+      case 38:
+        moveUp();
+        break;
+      case 39:
+        moveRight();
+        break;
+      case 40:
+        moveDown();
+        break;
+    }
+  }
+  // when a event is detect, execute the function
+  addEventListener('keydown', selectKeyboardMovement);
+</script>
+<body>
+
+</body>
+</html>
